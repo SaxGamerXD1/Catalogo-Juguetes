@@ -36,26 +36,26 @@
 
     /* ---------- BOTON DE INICIO ---------- */
     .btn-top {
-      position: fixed;
+     position: fixed;
       bottom: 20px;
       right: 20px;
 
-      width: 55px;
-      height: 55px;
+     width: 55px;
+     height: 55px;
 
       background: #ff4f87;
       color: white;
-      font-size: 26px;
+     font-size: 26px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 
-      border-radius: 50%;
-      text-decoration: none;
+     border-radius: 50%;
+     text-decoration: none;
 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      z-index: 9999;
+     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+     z-index: 9999;
     }
 
     /* ---------- PORTADA ---------- */
@@ -99,7 +99,7 @@
 
     /* ---------- CATEGORÍA ---------- */
     .categoria {
-      margin-top: 70px;
+      margin-top: 80px;
       padding-top: 30px;
       border-top: 4px dashed #ff4f87;
     }
@@ -113,6 +113,11 @@
     .categoria-header {
       text-align: center;
       margin-bottom: 35px;
+    }
+    .categoria::after {
+      content: "";
+     display: block;
+     height: 60px;
     }
 
     .categoria-header img {
@@ -199,6 +204,7 @@
     .variante {
      font-size: 20px;
      position: relative;
+     margin-right: 6px;
     }
     .variantes {
       display: flex;
@@ -206,17 +212,18 @@
      margin-top: 6px;
     }
     .variante.agotado {
-      opacity: 0.4;
+      opacity: 0.5;
     }
 
     .variante.agotado::after {
-      content: "✖";
+     content: "✖";
      position: absolute;
-     color: red;
+      top: -4px;
+      left: 4px;
+     font-size: 14px;
+     color: #e53935;
      font-weight: bold;
-     top: -6px;
-     left: 2px;
-    }
+  }
 
     /* ---------- AGOTADO ---------- */
     .agotado::after {
@@ -229,6 +236,13 @@
       color: red;
       opacity: .8;
     }
+
+    /* ---------- FORMA ---------- */
+
+    html, body {
+     overflow-x: hidden;
+     max-width: 100%;
+    }
   </style>
 </head>
 
@@ -239,6 +253,7 @@
   <!-- ===== PORTADA ===== -->
   <section class="page portada">
     <img src="images/logo.png" class="logo">
+    <h1>Jugueteria Ara</h1>
     <img src="images/portada-collage.png" class="collage">
   </section>
 
@@ -2138,6 +2153,5 @@
   </script>
 
 </body>
-
 
 </html>
