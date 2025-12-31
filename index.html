@@ -202,28 +202,33 @@
 
     /* ---------- VARIANTES ---------- */
     .variante {
-     font-size: 20px;
-     position: relative;
-     margin-right: 6px;
+      font-size: 20px;
+      position: relative;
+      display: inline-flex;
+     align-items: center;
+     justify-content: center;
     }
     .variantes {
       display: flex;
-     gap: 6px;
-     margin-top: 6px;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 8px;
     }
     .variante.agotado {
       opacity: 0.5;
     }
 
     .variante.agotado::after {
-     content: "✖";
-     position: absolute;
-      top: -4px;
-      left: 4px;
+      content: "✖";
+      position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
      font-size: 14px;
      color: #e53935;
      font-weight: bold;
-  }
+     pointer-events: none;
+    }
 
     /* ---------- AGOTADO ---------- */
     .agotado::after {
@@ -873,7 +878,10 @@
         <p><strong>Colores disponibles:</strong></p>
 
         <span class="variante">🔴 Rosa – Stock: 1</span>
-        <span class="variante">🔴 Rosa claro – Stock: 1</span>
+        <span class="variante">🟣 Morado – Stock: 1</span>
+        <span class="variante">🔵 Azul – Stock: 1</span>
+        <span class="variante">🟢 Verde – Stock: 1</span>
+        <span class="variante">🟡 Amarillo – Stock: 1</span>
       </div>
     </div>
 
