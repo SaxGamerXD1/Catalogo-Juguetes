@@ -201,35 +201,23 @@
     }
 
     /* ---------- VARIANTES ---------- */
-    .variante {
-      font-size: 20px;
-      position: relative;
-      display: inline-flex;
-     align-items: center;
-     justify-content: center;
-    }
     .variantes {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 8px;
-    }
-    .variante.agotado {
-      opacity: 0.5;
-    }
-
-    .variante.agotado::after {
-     content: "✖";
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 14px;
-     color: #e53935;
-     font-weight: bold;
-     pointer-events: none;
-    }
-
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+    .variantes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+   .x-agotado {
+  color: #e53935;
+  font-weight: bold;
+  margin-left: 4px;
+}
     /* ---------- FORMA ---------- */
 
     html, body {
@@ -2116,12 +2104,12 @@
     }
 
     /* MARCAR VARIANTES AGOTADAS */
-    document.querySelectorAll(".variante").forEach(v => {
-      if (parseInt(v.dataset.stock) === 0) {
-        v.classList.add("agotado");
-        v.innerHTML += " ❌";
-      }
-    });
+    document.querySelectorAll('.variante').forEach(v => {
+    if (v.textContent.includes('Stock: 0')) {
+      v.innerHTML += ' <span class="x-agotado">✖</span>';
+      v.style.opacity = '0.6';
+    }
+  });
 
     /* MARCAR PRODUCTOS AGOTADOS */
     document.querySelectorAll(".producto").forEach(producto => {
