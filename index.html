@@ -201,6 +201,28 @@
       right: 5px;
     }
 
+    .producto.agotado .img-container::before {
+       content: "";
+       position: absolute;
+       inset: 0;
+       background: rgba(0,0,0,0.55);
+      z-index: 2;
+      border-radius: 10px;
+    }
+
+    .producto.agotado .img-container::after {
+      content: "✖ AGOTADO";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      z-index: 3;
+     text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+    }
+
     /* ---------- VARIANTES ---------- */
     .variantes {
   display: flex;
@@ -283,7 +305,9 @@
       <p class="stock">Stock: 1</p>
 
       <!-- IMAGEN SIMPLE -->
+      <div class="img-container"></div>
       <img src="images/rompecabezas/2.jpeg" style="width:100%; border-radius:10px; margin-top:10px;">
+      </div>
 
     </div>
 
@@ -2120,6 +2144,11 @@
   });
 
     /* MARCAR PRODUCTOS AGOTADOS */
+    document.querySelectorAll('.producto').forEach(p => {
+    if (p.dataset.stock === "0") {
+      p.classList.add('agotado');
+    }
+    
     document.querySelectorAll(".producto").forEach(producto => {
       const variantes = producto.querySelectorAll(".variante");
       let todasAgotadas = true;
