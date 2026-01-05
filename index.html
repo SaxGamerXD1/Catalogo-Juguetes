@@ -227,6 +227,39 @@
       pointer-events: none;
     }
 
+    .img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.img-wrapper .overlay-agotado {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.35); /* más transparente */
+  color: rgba(255,255,255,0.85);
+
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  border-radius: 10px;
+  z-index: 5;
+  pointer-events: none;
+}
+
     /* ---------- VARIANTES ---------- */
     .variantes {
       display: flex;
@@ -2153,11 +2186,28 @@
   });
 
     /* MARCAR PRODUCTOS AGOTADOS */
-    document.querySelectorAll('.producto').forEach(p => {
-    if (p.dataset.stock === "0") {
-      p.classList.add('agotado');
-    }
-    });
+    document.querySelectorAll('.producto').forEach(producto => {
+  if (producto.dataset.stock === "0") {
+
+    const img = producto.querySelector('img');
+    if (!img) return;
+
+    // crear wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'img-wrapper';
+
+    // mover imagen dentro del wrapper
+    img.parentNode.insertBefore(wrapper, img);
+    wrapper.appendChild(img);
+
+    // crear overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay-agotado';
+    overlay.textContent = '✖ AGOTADO';
+
+    wrapper.appendChild(overlay);
+  }
+});
     
     document.querySelectorAll(".producto").forEach(producto => {
       const variantes = producto.querySelectorAll(".variante");
@@ -2187,6 +2237,7 @@
 
 
 </html>
+
 
 
 
